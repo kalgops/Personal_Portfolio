@@ -1,0 +1,225 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Background Gradient */
+    padding-top: 120px; /* Offset for fixed navbar */
+    margin: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background: linear-gradient(100deg, #161515, #ffd3e8, #a9effc);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: #161515;
+}
+
+.navbar-brand:hover {
+    color: #ffd700;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.25rem; /* Increased font size */
+    font-family: 'Pacifico', cursive; /* Cursive font */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.zoom-in {
+    opacity: 0;
+    animation: zoomIn 1s ease-in-out forwards;
+}
+
+.pop-in {
+    opacity: 0;
+    animation: zoomIn 1s ease-in-out 0.5s forwards;
+}
+
+/* Blog Post Styles */
+.blog-post {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    background-color: #ffffff; /* Light Mode Background */
+    color: #000000; /* Light Mode Text Color */
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px) rotateX(5deg); /* Subtle 3D hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0; /* Slightly lighter on hover */
+}
+
+.blog-post img {
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    height: 200px;
+}
+
+.blog-post .card-body {
+    font-family: 'Roboto', sans-serif; /* Roboto Font for Card Content */
+    background-color: #ffffff; /* Light Mode Background */
+    color: #000000; /* Light Mode Text Color */
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post .card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #000000; /* Light Mode Text Color */
+}
+
+.blog-post .card-text {
+    margin-bottom: 1rem;
+    color: #333333; /* Light Mode Text Color */
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, #a9effc, #ffd3e8);
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#social-links a {
+    color: #333;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#social-links a:hover {
+    color: #ffcc00;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    color: #ffffff;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+}
+
+body.dark-mode .navbar {
+    background: linear-gradient(100deg, #000000, #434343, #2c3e50);
+}
+
+body.dark-mode .navbar-brand {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar-brand:hover {
+    color: #ffcc00;
+}
+
+body.dark-mode .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar-nav .nav-link:hover {
+    color: #ffcc00;
+}
+
+body.dark-mode .blog-post {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .blog-post .card-body {
+    background-color: #333333;
+    color: #ffffff; /* Ensure text color is white in dark mode */
+}
+
+body.dark-mode .blog-post .card-title {
+    color: #ffffff; /* Ensure title color is white in dark mode */
+}
+
+body.dark-mode .blog-post .card-text {
+    color: #ffffff; /* Ensure text color is white in dark mode */
+}
+
+body.dark-mode footer {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: #ffffff;
+}
+
+body.dark-mode #social-links a {
+    color: #ffffff;
+}
+
+body.dark-mode #social-links a:hover {
+    color: #ffcc00;
+}
+
+#darkModeToggle {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    color: #ffcc00;
+}
+
+body.dark-mode #darkModeToggle i {
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    main {
+        margin: 120px 10px 0;
+        padding: 1rem;
+    }
+
+    .blog-post .card-title {
+        font-size: 1.3rem;
+    }
+
+    .blog-post img {
+        max-height: 150px; /* Adjust for smaller screens */
+    }
+}

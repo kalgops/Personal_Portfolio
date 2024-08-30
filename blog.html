@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon_io/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Font: Poppins, Roboto, and Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/blog.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/images/Kalyan_Logo.jpg" alt="Logo" style="height: 120px; width: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link slide-in-right" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link slide-in-right" href="experience.html">Experience</a></li>
+                <li class="nav-item"><a class="nav-link slide-in-right" href="portfolio.html">Portfolio</a></li>
+                <li class="nav-item active"><a class="nav-link slide-in-right" href="blog.html">Blog</a></li>
+                <li class="nav-item"><a class="nav-link slide-in-right" href="contact.html">Talk to me!</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a id="darkModeToggle" class="nav-link"><i class="fas fa-moon fa-2x"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Content -->
+    <main class="container my-5 fade-in">
+        <h1 class="text-center mb-4 zoom-in">My Blog</h1>
+        <p class="text-center">Welcome to my blog! Here, I share insights, articles, and thoughts on various topics related to my field.</p>
+
+        <!-- Introduction Post -->
+        <div class="blog-post card mb-4 shadow-sm pop-in">
+            <div class="card-body">
+                <h5 class="card-title">Welcome to My Blog!</h5>
+                <p class="card-text">Hello, I'm Kalyan Gopinath, a passionate web developer with over 10 years of experience in creating innovative digital solutions. Through this blog, I aim to share my insights, tips, and experiences in the world of technology. Whether you're a seasoned professional or a curious learner, I hope you'll find value and inspiration here. Stay tuned for exciting content ahead!</p>
+            </div>
+        </div>
+
+        <!-- Blog Post 1 -->
+        <div class="blog-post card mb-4 shadow-sm pop-in">
+            <img src="assets/images/Journey.jpg" class="card-img-top" alt="My Journey in Web Development">
+            <div class="card-body">
+                <h5 class="card-title">My Journey in Web Development</h5>
+                <p class="card-text">Over the past decade, I've had the opportunity to work on diverse projects ranging from e-commerce platforms to real-time chat applications. My expertise lies in using technologies like React.js, Node.js, and AWS to build scalable and efficient solutions. Notable achievements include leading the development of "The KG Store," a gym apparel e-commerce platform that has garnered positive user feedback and growth.</p>
+                <a href="#" class="btn btn-primary hover-bounce">Read More</a>
+            </div>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="blog-post card mb-4 shadow-sm pop-in">
+            <img src="assets/images/Innovations.jpg" class="card-img-top" alt="Trends and Innovations in Web Development">
+            <div class="card-body">
+                <h5 class="card-title">Trends and Innovations in Web Development</h5>
+                <p class="card-text">As the web development landscape evolves, staying updated with the latest trends is crucial. In recent years, the rise of Progressive Web Apps (PWAs) and the increased emphasis on user experience have transformed how we build applications. Looking ahead, I believe that technologies like AI and AR/VR will continue to shape the future of web development, opening up new possibilities for innovation.</p>
+                <a href="#" class="btn btn-primary hover-bounce">Read More</a>
+            </div>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="blog-post card mb-4 shadow-sm pop-in">
+            <img src="assets/images/Lessons.jpg" class="card-img-top" alt="Lessons Learned from My Career">
+            <div class="card-body">
+                <h5 class="card-title">Lessons Learned from My Career</h5>
+                <p class="card-text">One of the most valuable lessons I've learned is the importance of continuous learning and adaptation. Technology is ever-changing, and staying curious and open to new ideas has helped me stay relevant and innovative in my work. I encourage aspiring developers to embrace challenges as opportunities for growth and to never stop learning.</p>
+                <a href="#" class="btn btn-primary hover-bounce">Read More</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-muted bg-dark text-center py-3">
+        <div class="container">
+            <p>&copy; 2034 Kalyan Gopinath. All rights reserved.</p>
+            <div id="social-links">
+                <a href="https://www.linkedin.com/in/kalyan-gopinath-05540524b/" class="text-white mx-2" target="_blank">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <a href="https://github.com/kalgops" class="text-white mx-2" target="_blank">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleSwitch = document.getElementById('darkModeToggle');
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
+            } else {
+                document.body.classList.remove('dark-mode');
+                toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
+            }
+
+            toggleSwitch.addEventListener('click', function() {
+                if (document.body.classList.contains('dark-mode')) {
+                    document.body.classList.remove('dark-mode');
+                    toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.body.classList.add('dark-mode');
+                    toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

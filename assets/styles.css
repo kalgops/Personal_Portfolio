@@ -1,0 +1,209 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Background Gradient */
+    padding-top: 140px; /* Offset for fixed navbar */
+    margin: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background: linear-gradient(100deg, #161515, #ffd3e8, #a9effc);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    color: #161515;
+}
+
+.navbar-brand:hover {
+    color: #ffd700;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.5rem; /* Increased font size */
+    font-family: 'Pacifico', cursive; /* Human-readable cursive font */
+    color: #161515;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffd700;
+}
+
+/* Dark Mode Toggle */
+#darkModeToggle {
+    font-size: 2rem; /* Increased size */
+    color: #ffffff;
+}
+
+#darkModeToggle:hover {
+    color: #ffcc00;
+}
+
+/* Welcome Section */
+#welcome-section {
+    background: linear-gradient(100deg, #161515, #ffd3e8, #a9effc);
+}
+
+#welcome-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+#welcome-section p {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+#welcome-section a {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(100deg, #161515);
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: #fff;
+}
+
+#welcome-section a:hover {
+    background-color: #eaff02;
+    transform: scale(1.05);
+}
+
+/* About Section Styles */
+.about-img {
+    max-width: 80%; /* Limit image width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px auto; /* Center image if needed */
+    display: block; /* Block-level to respect margin: auto */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+    transform: scale(1.05); /* Slightly zoom in */
+}
+
+/* Project Section Styles */
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px) rotateX(5deg); /* Subtle 3D hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+}
+
+.card-title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.card-title:hover {
+    color: #007bff;
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Matching background gradient */
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#social-links a {
+    color: #333;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#social-links a:hover {
+    color: #ffcc00;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    color: #ffffff;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Dark background gradient */
+}
+
+body.dark-mode .navbar {
+    background: linear-gradient(100deg, #000000, #434343, #2c3e50);
+}
+
+body.dark-mode .navbar-brand {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar-brand:hover {
+    color: #ffcc00;
+}
+
+body.dark-mode .nav-link {
+    color: #ffffff;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #ffcc00;
+}
+
+body.dark-mode #welcome-section {
+    background: linear-gradient(100deg, #000000, #434343, #2c3e50);
+}
+
+body.dark-mode #welcome-section h1, 
+body.dark-mode #welcome-section p {
+    color: #ffffff;
+}
+
+body.dark-mode #welcome-section a {
+    background: #444444;
+}
+
+body.dark-mode #welcome-section a:hover {
+    background-color: #ffcc00;
+}
+
+body.dark-mode .about-img {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .card {
+    background-color: #333333;
+}
+
+body.dark-mode .card-title {
+    color: #ffffff;
+}
+
+body.dark-mode footer {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: #ffffff;
+}
+
+body.dark-mode #social-links a {
+    color: #ffffff;
+}
+
+body.dark-mode #social-links a:hover {
+    color: #ffcc00;
+}
+
+/* Dark Mode Icon Styles */
+#darkModeToggle i {
+    color: #ffcc00;
+}
