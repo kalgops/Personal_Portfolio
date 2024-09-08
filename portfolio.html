@@ -39,7 +39,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a id="darkModeToggle" class="nav-link"><i class="fas fa-moon fa-2x"></i></a>
+                    <a id="darkModeToggle" class="nav-link"><i class="fas fa-moon fa-1x"></i></a>
                 </li>
             </ul>
         </div>
@@ -141,38 +141,49 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom JavaScript -->
     <script>
-        // Function to show project details
-        function showProjectDetails(projectId) {
-            const details = document.getElementById(`project-details-${projectId}`);
-            if (details.style.display === 'none') {
-                details.style.display = 'block';
-            } else {
-                details.style.display = 'none';
-            }
-        }
+// Function to show project details with smooth animation
+function showProjectDetails(projectId) {
+    const details = document.getElementById(`project-details-${projectId}`);
+    
+    // Toggle the 'show-content' class and adjust styles accordingly
+    if (details.style.display === 'block') {
+        // If the details are visible, hide them
+        details.style.height = '0';  // Set height to 0 to animate hiding
+        details.style.opacity = '0';  // Set opacity to 0 to fade out
+        setTimeout(() => {
+            details.style.display = 'none';  // Hide the element after the transition
+        }, 500); // Wait for the transition to complete
+    } else {
+        // If the details are hidden, show them
+        details.style.display = 'block';  // Ensure display is block to measure height
+        details.style.height = 'auto'; // Let content define its own height
+        const fullHeight = details.scrollHeight + 'px'; // Get full height needed for the content
+        details.style.height = '0'; // Set initial height to 0
+        details.style.opacity = '0'; // Set initial opacity to 0
+        setTimeout(() => {
+            details.style.height = fullHeight; // Animate to full height
+            details.style.opacity = '1'; // Fade in
+        }, 10); // Add a slight delay to ensure CSS transitions apply
+    }
+}
 
-        // Dark Mode Toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleSwitch = document.getElementById('darkModeToggle');
-            const currentTheme = localStorage.getItem('theme');
-        
-            if (currentTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
-            }
-        
-            toggleSwitch.addEventListener('click', function() {
-                if (document.body.classList.contains('dark-mode')) {
-                    document.body.classList.remove('dark-mode');
-                    toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.body.classList.add('dark-mode');
-                    toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        });
+// Dark Mode Toggle with smooth transition
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleSwitch = document.getElementById('darkModeToggle');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleSwitch.innerHTML = '<i class="fas fa-sun fa-1x"></i>';
+    }
+
+    toggleSwitch.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        toggleSwitch.innerHTML = isDarkMode ? '<i class="fas fa-sun fa-1x"></i>' : '<i class="fas fa-moon fa-1x"></i>';
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+});
     </script>
 </body>
 </html>

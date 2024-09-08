@@ -11,12 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     toggleSwitch.addEventListener('click', function(e) {
-        // Get the bounding rectangle of the toggle button
         const rect = toggleSwitch.getBoundingClientRect();
         const x = rect.left + rect.width / 2 + window.scrollX;
         const y = rect.top + rect.height / 2 + window.scrollY;
 
-        // Set custom properties to position the starting point of the animation
         waterEffect.style.setProperty('--x', `${x}px`);
         waterEffect.style.setProperty('--y', `${y}px`);
         waterEffect.classList.add('active');
@@ -31,12 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleSwitch.innerHTML = '<i class="fas fa-sun"></i>';
                 localStorage.setItem('theme', 'dark');
             }
-        }, 500); // Delay for the water effect animation
+        }, 500);
 
         setTimeout(() => {
             waterEffect.classList.remove('active');
-        }, 1100); // Remove effect after the animation completes
+        }, 1100);
     });
+
+    // Function to show project details in modal
+    window.showProjectDetails = function(title, description) {
+        const modalTitle = document.getElementById('projectModalLabel');
+        const modalBody = document.querySelector('#projectModal .modal-body');
+
+        modalTitle.textContent = title;
+        modalBody.innerHTML = `<p>${description}</p>`;
+    };
 
     // Smooth Scrolling
     document.querySelectorAll('a[href*="#"]').forEach(anchor => {

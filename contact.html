@@ -14,6 +14,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/contact.css">
+    <style>
+        .highlighted { border-color: #007bff; }
+        .loading { pointer-events: none; opacity: 0.7; }
+        .btn-loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-right-color: transparent;
+            animation: spin 0.6s linear infinite;
+            margin-left: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="70">
 
@@ -52,30 +71,33 @@
                 <p class="text-center">Feel free to reach out to me through the form below.</p>
 
                 <!-- Contact Form -->
-                <form id="contact-form" class="col-md-8 mx-auto needs-validation pop-in" novalidate>
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                        <div class="invalid-feedback">Please enter your name.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <div class="invalid-feedback">Please enter a valid email address.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                        <div class="invalid-feedback">Please enter your message.</div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary hover-bounce">Send Message</button>
-                </form>
-            </section>
-        </main>
+<form id="contact-form" class="col-md-8 mx-auto needs-validation pop-in" novalidate>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="invalid-feedback">Please enter your name.</div>
     </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+    </div>
+
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        <div class="invalid-feedback">Please enter your message.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary hover-bounce">Send Message</button>
+
+    <!-- Confirmation Message -->
+    <div id="confirmation-message" class="alert alert-success mt-3" style="display: none;">
+        Thank you! Your message has been sent successfully.
+    </div>
+</form>
+
     
     <!-- Footer -->
     <footer class="text-muted bg-dark text-center py-3">
@@ -98,30 +120,53 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Custom JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleSwitch = document.getElementById('darkModeToggle');
-            const currentTheme = localStorage.getItem('theme');
+     document.addEventListener('DOMContentLoaded', () => {
+    const toggleSwitch = document.getElementById('darkModeToggle');
+    const currentTheme = localStorage.getItem('theme');
 
-            if (currentTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
-            } else {
-                document.body.classList.remove('dark-mode');
-                toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
-            }
+    // Set initial theme based on saved preference
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
+    } else {
+        document.body.classList.remove('dark-mode');
+        toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
+    }
 
-            toggleSwitch.addEventListener('click', function() {
-                if (document.body.classList.contains('dark-mode')) {
-                    document.body.classList.remove('dark-mode');
-                    toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.body.classList.add('dark-mode');
-                    toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        });
+    // Toggle dark mode
+    toggleSwitch.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        toggleSwitch.innerHTML = isDarkMode ? '<i class="fas fa-sun fa-2x"></i>' : '<i class="fas fa-moon fa-2x"></i>';
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+
+    // Form submission handling
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        // Validate form
+        if (!contactForm.checkValidity()) {
+            contactForm.classList.add('was-validated');
+        } else {
+            // Show spinner on button
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.classList.add('btn-loading');
+
+            // Simulate form processing
+            setTimeout(() => {
+                // Show confirmation message
+                document.getElementById('confirmation-message').style.display = 'block';
+                
+                // Reset form after showing confirmation
+                contactForm.reset();
+                contactForm.classList.remove('was-validated');
+                submitButton.classList.remove('btn-loading');
+            }, 1000); // 1 second delay to simulate form submission
+        }
+    });
+});
     </script>
 </body>
 </html>

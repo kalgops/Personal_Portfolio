@@ -39,7 +39,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a id="darkModeToggle" class="nav-link"><i class="fas fa-moon fa-2x"></i></a>
+                    <a id="darkModeToggle" class="nav-link"><i class="fas fa-moon fa-1x"></i></a>
                 </li>
             </ul>
         </div>
@@ -53,60 +53,94 @@
         </div>
     </section>
 
-        <!-- About Section -->
-        <div id="about" class="container my-5">
-            <div class="row">
-                <div class="col-md-6 slide-in-left">
-                    <h2>Kalyan Gopinath</h2>
-                    <p>I'm a professional with over 10 years of experience in the industry, specializing in web development and design. My journey has been driven by a passion for innovation and a commitment to excellence.</p>
-                    <p>Throughout my career, I've had the opportunity to work on a wide range of projects, from building sophisticated e-commerce platforms to developing real-time web applications. My expertise lies in using modern web technologies like HTML, CSS, JavaScript, React.js, and Node.js to create responsive, user-friendly interfaces.</p>
-                    <p>I have a strong foundation in both front-end and back-end development, allowing me to efficiently handle full-stack projects. I am adept at understanding user needs and translating them into functional and aesthetically pleasing designs.</p>
-                    <p>I am committed to continuous learning and staying updated with industry trends, which empowers me to deliver cutting-edge solutions that exceed client expectations. My goal is to contribute to innovative projects that have a positive impact and push the boundaries of web development.</p>
-                    <p>I'm always open to collaborating with like-minded professionals and exploring opportunities that challenge me to grow and innovate.</p>
-                    <div id="dynamic-content" class="mt-3"></div>
-                </div>
-                <div class="col-md-6 slide-in-right">
-                    <img src="assets/images/About_me.jpeg" alt="About Me" class="img-fluid rounded shadow about-img">
-                </div>
-            </div>
-        </div>
-
-    <!-- Projects Section -->
-    <div class="container my-5 fade-in">
-        <h2 class="text-center zoom-in">Featured Projects</h2>
+    <!-- About Section -->
+    <div id="about" class="container my-5">
         <div class="row">
-            <!-- Project 1: The KG Store -->
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="assets/images/The_KG_Store.webp" class="card-img-top" alt="Project 1">
-                    <div class="card-body">
-                        <h5 class="card-title">The KG Store</h5>
-                        <a href="portfolio.html" class="btn btn-info btn-sm">More Info</a>
-                    </div>
-                </div>
+            <div class="col-md-6 slide-in-left">
+                <h2>Kalyan Gopinath</h2>
+                <p>I'm a professional with over 10 years of experience in the industry, specializing in web development and design. My journey has been driven by a passion for innovation and a commitment to excellence.</p>
+                <p>Throughout my career, I've had the opportunity to work on a wide range of projects, from building sophisticated e-commerce platforms to developing real-time web applications. My expertise lies in using modern web technologies like HTML, CSS, JavaScript, React.js, and Node.js to create responsive, user-friendly interfaces.</p>
+                <p>I have a strong foundation in both front-end and back-end development, allowing me to efficiently handle full-stack projects. I am adept at understanding user needs and translating them into functional and aesthetically pleasing designs.</p>
+                <p>I am committed to continuous learning and staying updated with industry trends, which empowers me to deliver cutting-edge solutions that exceed client expectations. My goal is to contribute to innovative projects that have a positive impact and push the boundaries of web development.</p>
+                <p>I'm always open to collaborating with like-minded professionals and exploring opportunities that challenge me to grow and innovate.</p>
+                <div id="dynamic-content" class="mt-3"></div>
             </div>
-            <!-- Project 2: ThoughtStream -->
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="assets/images/project2.jpg" class="card-img-top" alt="Project 2">
-                    <div class="card-body">
-                        <h5 class="card-title">ThoughtStream</h5>
-                        <a href="portfolio.html" class="btn btn-info btn-sm">More Info</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 3: ChatConnect -->
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="assets/images/project3.jpg" class="card-img-top" alt="Project 3">
-                    <div class="card-body">
-                        <h5 class="card-title">ChatConnect</h5>
-                        <a href="portfolio.html" class="btn btn-info btn-sm">More Info</a>
-                    </div>
-                </div>
+            <div class="col-md-6 slide-in-right">
+                <img src="assets/images/About_me.jpeg" alt="About Me" class="img-fluid rounded shadow about-img">
             </div>
         </div>
     </div>
+
+    <!-- Modal Structure for Project Details -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Project details will be inserted here by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Portfolio Content -->
+    <main class="container my-5 fade-in">
+        <h1 class="text-center mb-4 zoom-in">Featured Projects</h1>
+        
+        <!-- Projects Section -->
+        <div class="row">
+            <!-- Project 1: The KG Store -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm project hover-bounce">
+                    <img src="assets/images/The_KG_Store.webp" class="card-img-top" alt="The KG Store">
+                    <div class="card-body">
+                        <h5 class="card-title">The KG Store</h5>
+                        <button class="btn btn-info btn-sm" onclick="showProjectDetails(
+                            'The KG Store', 
+                            'The KG Store is a gym apparel e-commerce platform providing a seamless shopping experience for fitness enthusiasts worldwide.<br><strong>Key Aspects and Technologies Used:</strong><ul><li>Front-End: React.js</li><li>Back-End: Node.js and Express.js</li><li>Database: MongoDB</li><li>Payment Integration: Stripe API</li><li>Deployment: AWS using Docker</li></ul>'
+                        )" data-toggle="modal" data-target="#projectModal">More Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: ThoughtStream -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm project hover-bounce">
+                    <img src="assets/images/Project2.jpg" class="card-img-top" alt="ThoughtStream">
+                    <div class="card-body">
+                        <h5 class="card-title">ThoughtStream</h5>
+                        <button class="btn btn-info btn-sm" onclick="showProjectDetails(
+                            'ThoughtStream', 
+                            'ThoughtStream is a personal blog platform that enables users to create, edit, and share articles on various topics.<br><strong>Key Aspects and Technologies Used:</strong><ul><li>Front-End: Angular</li><li>Back-End: Django REST Framework</li><li>Database: PostgreSQL</li><li>Authentication: OAuth 2.0</li><li>Responsive Design: Bootstrap</li></ul>'
+                        )" data-toggle="modal" data-target="#projectModal">More Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: ChatConnect -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm project hover-bounce">
+                    <img src="assets/images/Project3.jpg" class="card-img-top" alt="ChatConnect">
+                    <div class="card-body">
+                        <h5 class="card-title">ChatConnect</h5>
+                        <button class="btn btn-info btn-sm" onclick="showProjectDetails(
+                            'ChatConnect', 
+                            'ChatConnect is a real-time chat application that allows users to communicate with each other instantly.<br><strong>Key Aspects and Technologies Used:</strong><ul><li>Front-End: Vue.js</li><li>Back-End: Node.js with Socket.IO</li><li>Database: Redis</li><li>Security: JWT for authentication</li><li>Deployment: Jenkins and Docker</li></ul>'
+                        )" data-toggle="modal" data-target="#projectModal">More Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer class="text-muted bg-dark text-center py-3 fade-in">

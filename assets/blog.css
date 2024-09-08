@@ -2,8 +2,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: #000000;
-    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Background Gradient */
-    padding-top: 120px; /* Offset for fixed navbar */
+    background: linear-gradient(135deg, #a9effc, #ffd3e8);
+    padding-top: 120px;
     margin: 0;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -25,46 +25,8 @@ body {
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.25rem; /* Increased font size */
-    font-family: 'Pacifico', cursive; /* Cursive font */
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
-}
-
-.zoom-in {
-    opacity: 0;
-    animation: zoomIn 1s ease-in-out forwards;
-}
-
-.pop-in {
-    opacity: 0;
-    animation: zoomIn 1s ease-in-out 0.5s forwards;
+    font-size: 1.5rem;
+    font-family: 'Pacifico', cursive;
 }
 
 /* Blog Post Styles */
@@ -72,15 +34,14 @@ body {
     border: none;
     border-radius: 10px;
     margin-bottom: 2rem;
-    background-color: #ffffff; /* Light Mode Background */
-    color: #000000; /* Light Mode Text Color */
+    background-color: #ffffff;
     transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
 .blog-post:hover {
-    transform: translateY(-5px) rotateX(5deg); /* Subtle 3D hover effect */
+    transform: translateY(-5px) rotateX(5deg);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #f0f0f0; /* Slightly lighter on hover */
+    background-color: #f0f0f0;
 }
 
 .blog-post img {
@@ -90,9 +51,9 @@ body {
 }
 
 .blog-post .card-body {
-    font-family: 'Roboto', sans-serif; /* Roboto Font for Card Content */
-    background-color: #ffffff; /* Light Mode Background */
-    color: #000000; /* Light Mode Text Color */
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -101,34 +62,40 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
     text-align: center;
-    color: #000000; /* Light Mode Text Color */
 }
 
 .blog-post .card-text {
     margin-bottom: 1rem;
-    color: #333333; /* Light Mode Text Color */
+    color: #333333;
 }
 
-/* Footer Styles */
-footer {
-    background: linear-gradient(135deg, #a9effc, #ffd3e8);
-    color: #333;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+/* Read More Button */
+.read-more-btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#social-links a {
-    color: #333;
-    margin: 0 10px;
-    text-decoration: none;
-    transition: color 0.3s;
+.read-more-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-#social-links a:hover {
-    color: #ffcc00;
+/* Pagination Styles */
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-link:hover {
+    color: #0056b3;
 }
 
 /* Dark Mode Styles */
@@ -164,15 +131,15 @@ body.dark-mode .blog-post {
 
 body.dark-mode .blog-post .card-body {
     background-color: #333333;
-    color: #ffffff; /* Ensure text color is white in dark mode */
+    color: #ffffff;
 }
 
 body.dark-mode .blog-post .card-title {
-    color: #ffffff; /* Ensure title color is white in dark mode */
+    color: #ffffff;
 }
 
 body.dark-mode .blog-post .card-text {
-    color: #ffffff; /* Ensure text color is white in dark mode */
+    color: #ffffff;
 }
 
 body.dark-mode footer {
@@ -220,6 +187,6 @@ body.dark-mode #darkModeToggle i {
     }
 
     .blog-post img {
-        max-height: 150px; /* Adjust for smaller screens */
+        max-height: 150px;
     }
 }

@@ -41,7 +41,7 @@ main {
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.25rem; /* Increased font size */
+    font-size: 1.5rem; /* Increased font size */
     font-family: 'Pacifico', cursive; /* Human-readable cursive font */
 }
 
@@ -101,6 +101,34 @@ main {
 #contact-form button:hover {
     background-color: #0056b3;
 }
+
+/* Spinner Style */
+.btn-loading {
+    position: relative;
+    pointer-events: none; /* Prevent clicks while loading */
+    opacity: 0.7; /* Slightly reduce opacity to indicate loading */
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust spinner position */
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff; /* Spinner color */
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    animation: spin 0.6s linear infinite; /* Spinning animation */
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 /* Footer Styles */
 footer {

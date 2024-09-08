@@ -1,11 +1,18 @@
 /* General Styles */
+:root {
+    --light-bg: linear-gradient(135deg, #a9effc, #ffd3e8); /* Light mode background */
+    --dark-bg: linear-gradient(135deg, #2c3e50, #4ca1af); /* Dark mode background */
+    --light-text: #000000; /* Light mode text color */
+    --dark-text: #ffffff; /* Dark mode text color */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    color: #000000;
-    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Background Gradient */
-    padding-top: 140px; /* Offset for fixed navbar */
+    color: var(--light-text);
+    background: var(--light-bg); /* Use CSS variable for background */
+    padding-top: 140px;
     margin: 0;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out; /* Smooth and extended transition */
 }
 
 /* Navigation Bar Styles */
@@ -15,7 +22,7 @@ body {
 
 .navbar-brand {
     font-weight: bold;
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-family: 'Pacifico', cursive;
     font-size: 1.5rem;
     color: #161515;
 }
@@ -25,8 +32,8 @@ body {
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.5rem; /* Increased font size */
-    font-family: 'Pacifico', cursive; /* Human-readable cursive font */
+    font-size: 1.5rem;
+    font-family: 'Pacifico', cursive;
     color: #161515;
 }
 
@@ -36,8 +43,10 @@ body {
 
 /* Dark Mode Toggle */
 #darkModeToggle {
-    font-size: 2rem; /* Increased size */
+    font-size: 2rem;
     color: #ffffff;
+    cursor: pointer;
+    transition: color 0.5s ease;
 }
 
 #darkModeToggle:hover {
@@ -46,20 +55,21 @@ body {
 
 /* Welcome Section */
 #welcome-section {
-    background: linear-gradient(100deg, #161515, #ffd3e8, #a9effc);
+    background: var(--light-bg); /* Use the light mode background variable */
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out; /* Smooth transition for background and text color */
+    color: var(--light-text); /* Light mode text color */
+}
+
+body.dark-mode #welcome-section {
+    background: var(--dark-bg); /* Use the dark mode background variable */
+    color: var(--dark-text); /* Dark mode text color */
 }
 
 #welcome-section h1 {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #ffffff;
-}
-
-#welcome-section p {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
+    color: inherit; /* Inherit the color from the section */
 }
 
 #welcome-section a {
@@ -78,17 +88,17 @@ body {
 
 /* About Section Styles */
 .about-img {
-    max-width: 80%; /* Limit image width */
-    height: auto; /* Maintain aspect ratio */
-    margin: 20px auto; /* Center image if needed */
-    display: block; /* Block-level to respect margin: auto */
+    max-width: 80%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .about-img:hover {
-    transform: scale(1.05); /* Slightly zoom in */
+    transform: scale(1.05);
 }
 
 /* Project Section Styles */
@@ -98,7 +108,7 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-5px) rotateX(5deg); /* Subtle 3D hover effect */
+    transform: translateY(-5px) rotateX(5deg);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #f0f0f0;
 }
@@ -115,13 +125,14 @@ body {
 
 /* Footer Styles */
 footer {
-    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Matching background gradient */
+    background: inherit;
     color: #333;
     padding: 20px 0;
     text-align: center;
     position: relative;
     bottom: 0;
     width: 100%;
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out; /* Smooth transition */
 }
 
 #social-links a {
@@ -137,73 +148,142 @@ footer {
 
 /* Dark Mode Styles */
 body.dark-mode {
-    color: #ffffff;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Dark background gradient */
+    color: var(--dark-text);
+    background: var(--dark-bg);
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out; /* Smooth transition */
 }
 
 body.dark-mode .navbar {
     background: linear-gradient(100deg, #000000, #434343, #2c3e50);
+    transition: background 1.5s ease-in-out; /* Smooth transition */
 }
 
-body.dark-mode .navbar-brand {
-    color: #ffffff;
-}
-
-body.dark-mode .navbar-brand:hover {
-    color: #ffcc00;
-}
-
-body.dark-mode .nav-link {
-    color: #ffffff;
-}
-
-body.dark-mode .nav-link:hover {
-    color: #ffcc00;
-}
-
-body.dark-mode #welcome-section {
-    background: linear-gradient(100deg, #000000, #434343, #2c3e50);
-}
-
-body.dark-mode #welcome-section h1, 
-body.dark-mode #welcome-section p {
-    color: #ffffff;
-}
-
-body.dark-mode #welcome-section a {
-    background: #444444;
-}
-
-body.dark-mode #welcome-section a:hover {
-    background-color: #ffcc00;
-}
-
-body.dark-mode .about-img {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+body.dark-mode .navbar-brand, 
+body.dark-mode .navbar-nav .nav-link, 
+body.dark-mode footer {
+    transition: color 1.5s ease-in-out; /* Smooth transition */
 }
 
 body.dark-mode .card {
     background-color: #333333;
-}
-
-body.dark-mode .card-title {
     color: #ffffff;
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out; /* Smooth transition */
 }
 
-body.dark-mode footer {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    color: #ffffff;
+body:not(.dark-mode) .card {
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out; /* Smooth transition */
 }
 
-body.dark-mode #social-links a {
-    color: #ffffff;
+#project-details-1,
+#project-details-2,
+#project-details-3 {
+    display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, height 0.5s ease;
 }
 
-body.dark-mode #social-links a:hover {
-    color: #ffcc00;
+.show-content {
+    display: block;
+    opacity: 1;
+    height: auto;
+    padding: 15px;
+    background-color: #161515;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.948);
+    transition: opacity 0.5s ease, height 0.5s ease;
 }
 
-/* Dark Mode Icon Styles */
-#darkModeToggle i {
-    color: #ffcc00;
+/* Modal Styles */
+.modal-content {
+    background-color: #ffffff; /* Default light mode background */
+    color: #000000; /* Default light mode text color */
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode .modal-content {
+    background-color: #333333; /* Dark mode background */
+    color: #ffffff; /* Dark mode text color */
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+    border-color: #444444; /* Adjust border color for dark mode */
+}
+
+body.dark-mode .modal-title {
+    color: #ffffff; /* Ensure modal title is visible in dark mode */
+}
+
+body.dark-mode .close {
+    color: #ffffff; /* Ensure close button is visible in dark mode */
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #555555; /* Adjust button background for dark mode */
+    border-color: #555555; /* Adjust button border for dark mode */
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #666666; /* Hover effect for dark mode button */
+    border-color: #666666;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 576px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    footer {
+        font-size: 0.875rem;
+        padding: 10px;
+    }
 }

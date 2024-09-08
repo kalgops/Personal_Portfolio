@@ -2,7 +2,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: #000000;
-    background: linear-gradient(135deg, #a9effc, #ffd3e8);
+    background: linear-gradient(135deg, #a9effc, #ffd3e8); /* Light mode gradient */
     padding-top: 120px;
     margin: 0;
     transition: background-color 0.5s ease, color 0.5s ease;
@@ -46,8 +46,7 @@ body {
 #experience {
     padding: 2rem;
     border-radius: 8px;
-    background: linear-gradient(135deg, #ffd3e8, #a9effc);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: transparent;
 }
 
 #experience h1 {
@@ -63,21 +62,21 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    max-width: 1200px; /* Constrain width to avoid overly wide layouts */
-    margin: 0 auto; /* Center align the container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Individual Experience Box Styling */
 .experience-box {
-    flex: 1 1 calc(33.333% - 1rem); /* Responsive 3-column layout */
-    max-width: 100%; /* Ensure boxes don't overflow */
-    background: #ffffff;
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Light mode box background */
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 200px; /* Consistent height for better alignment */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
+    min-height: 200px;
 }
 
 .experience-box:hover {
@@ -106,8 +105,7 @@ body {
 #skills {
     padding: 2rem;
     border-radius: 8px;
-    background: linear-gradient(135deg, #ffd3e8, #a9effc);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: transparent;
 }
 
 #skills h2 {
@@ -123,21 +121,21 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    max-width: 1200px; /* Constrain width to avoid overly wide layouts */
-    margin: 0 auto; /* Center align the container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Individual Skill Box Styling */
 .skill-box {
-    flex: 1 1 calc(33.333% - 1rem); /* Responsive 3-column layout */
-    max-width: 100%; /* Ensure boxes don't overflow */
-    background: #ffffff;
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Light mode box background */
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 150px; /* Consistent height for better alignment */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
+    min-height: 150px;
 }
 
 .skill-box:hover {
@@ -165,7 +163,7 @@ body {
 /* Dark Mode Styles */
 body.dark-mode {
     color: #ffffff;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Dark mode gradient */
 }
 
 body.dark-mode .navbar {
@@ -180,36 +178,54 @@ body.dark-mode .navbar-brand:hover, body.dark-mode .navbar-nav .nav-link:hover {
     color: #ffcc00;
 }
 
-body.dark-mode .experience-box, body.dark-mode .skill-box {
-    background-color: #333;
+/* Dark Mode Styles for Experience and Skills Boxes */
+body.dark-mode .experience-box, 
+body.dark-mode .skill-box {
+    background: rgba(60, 60, 60, 0.9); /* Dark mode box background */
+    color: #ffffff; /* Ensure text is white */
 }
 
-body.dark-mode .experience-box:hover, body.dark-mode .skill-box:hover {
-    background-color: #444;
+body.dark-mode .experience-box h3, 
+body.dark-mode .experience-box p,
+body.dark-mode .skill-box h3, 
+body.dark-mode .skill-box p {
+    color: #ffffff; /* Ensure all text is white in dark mode */
 }
 
-body.dark-mode footer {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    color: #ffffff;
+body.dark-mode .experience-box:hover, 
+body.dark-mode .skill-box:hover {
+    background-color: rgba(80, 80, 80, 0.9); /* Slightly darker on hover in dark mode */
 }
 
-body.dark-mode #social-links a {
-    color: #ffffff;
+/* Footer Styles */
+footer {
+    background: inherit; /* Matches the body's background */
+    color: inherit;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.5s ease;
 }
 
-body.dark-mode #social-links a:hover {
+#social-links a {
+    color: inherit;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#social-links a:hover {
     color: #ffcc00;
 }
 
 /* Responsive Adjustments */
 @media screen and (max-width: 992px) {
     .experience-box, .skill-box {
-        flex: 1 1 calc(50% - 1rem); /* Two columns on medium screens */
+        flex: 1 1 calc(50% - 1rem);
     }
 }
 
 @media screen and (max-width: 576px) {
     .experience-box, .skill-box {
-        flex: 1 1 100%; /* Single column on small screens */
+        flex: 1 1 100%;
     }
 }

@@ -36,7 +36,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a id="darkModeToggle" class="nav-link"><i class="fas fa-moon fa-2x"></i></a>
+                    <a id="darkModeToggle" class="nav-link" aria-label="Toggle Dark Mode"><i class="fas fa-moon fa-2x"></i></a>
                 </li>
             </ul>
         </div>
@@ -47,43 +47,16 @@
         <h1 class="text-center mb-4 zoom-in">My Blog</h1>
         <p class="text-center">Welcome to my blog! Here, I share insights, articles, and thoughts on various topics related to my field.</p>
 
-        <!-- Introduction Post -->
-        <div class="blog-post card mb-4 shadow-sm pop-in">
-            <div class="card-body">
-                <h5 class="card-title">Welcome to My Blog!</h5>
-                <p class="card-text">Hello, I'm Kalyan Gopinath, a passionate web developer with over 10 years of experience in creating innovative digital solutions. Through this blog, I aim to share my insights, tips, and experiences in the world of technology. Whether you're a seasoned professional or a curious learner, I hope you'll find value and inspiration here. Stay tuned for exciting content ahead!</p>
-            </div>
+        <div id="blog-posts" class="row">
+            <!-- Blog posts will be dynamically inserted here -->
         </div>
 
-        <!-- Blog Post 1 -->
-        <div class="blog-post card mb-4 shadow-sm pop-in">
-            <img src="assets/images/Journey.jpg" class="card-img-top" alt="My Journey in Web Development">
-            <div class="card-body">
-                <h5 class="card-title">My Journey in Web Development</h5>
-                <p class="card-text">Over the past decade, I've had the opportunity to work on diverse projects ranging from e-commerce platforms to real-time chat applications. My expertise lies in using technologies like React.js, Node.js, and AWS to build scalable and efficient solutions. Notable achievements include leading the development of "The KG Store," a gym apparel e-commerce platform that has garnered positive user feedback and growth.</p>
-                <a href="#" class="btn btn-primary hover-bounce">Read More</a>
-            </div>
-        </div>
-
-        <!-- Blog Post 2 -->
-        <div class="blog-post card mb-4 shadow-sm pop-in">
-            <img src="assets/images/Innovations.jpg" class="card-img-top" alt="Trends and Innovations in Web Development">
-            <div class="card-body">
-                <h5 class="card-title">Trends and Innovations in Web Development</h5>
-                <p class="card-text">As the web development landscape evolves, staying updated with the latest trends is crucial. In recent years, the rise of Progressive Web Apps (PWAs) and the increased emphasis on user experience have transformed how we build applications. Looking ahead, I believe that technologies like AI and AR/VR will continue to shape the future of web development, opening up new possibilities for innovation.</p>
-                <a href="#" class="btn btn-primary hover-bounce">Read More</a>
-            </div>
-        </div>
-
-        <!-- Blog Post 3 -->
-        <div class="blog-post card mb-4 shadow-sm pop-in">
-            <img src="assets/images/Lessons.jpg" class="card-img-top" alt="Lessons Learned from My Career">
-            <div class="card-body">
-                <h5 class="card-title">Lessons Learned from My Career</h5>
-                <p class="card-text">One of the most valuable lessons I've learned is the importance of continuous learning and adaptation. Technology is ever-changing, and staying curious and open to new ideas has helped me stay relevant and innovative in my work. I encourage aspiring developers to embrace challenges as opportunities for growth and to never stop learning.</p>
-                <a href="#" class="btn btn-primary hover-bounce">Read More</a>
-            </div>
-        </div>
+        <!-- Pagination Controls -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination buttons will be dynamically generated -->
+            </ul>
+        </nav>
     </main>
 
     <!-- Footer -->
@@ -107,27 +80,123 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const postsPerPage = 2; // Number of posts per page
+            let currentPage = 1;
+
+            // Sample blog posts data
+            const blogPosts = [
+                {
+                    id: 1,
+                    title: "My Journey in Web Development",
+                    content: "Over the past decade, I've had the opportunity to work on diverse projects ranging from e-commerce platforms to real-time chat applications. My expertise lies in using technologies like React.js, Node.js, and AWS to build scalable and efficient solutions. Notable achievements include leading the development of 'The KG Store,' a gym apparel e-commerce platform that has garnered positive user feedback and growth.",
+                    image: "assets/images/Journey.jpg"
+                },
+                {
+                    id: 2,
+                    title: "Trends and Innovations in Web Development",
+                    content: "As the web development landscape evolves, staying updated with the latest trends is crucial. In recent years, the rise of Progressive Web Apps (PWAs) and the increased emphasis on user experience have transformed how we build applications. Looking ahead, I believe that technologies like AI and AR/VR will continue to shape the future of web development, opening up new possibilities for innovation.",
+                    image: "assets/images/Innovations.jpg"
+                },
+                {
+                    id: 3,
+                    title: "Lessons Learned from My Career",
+                    content: "One of the most valuable lessons I've learned is the importance of continuous learning and adaptation. Technology is ever-changing, and staying curious and open to new ideas has helped me stay relevant and innovative in my work. I encourage aspiring developers to embrace challenges as opportunities for growth and to never stop learning.",
+                    image: "assets/images/Lessons.jpg"
+                }
+                // Add more posts as needed
+            ];
+
+            function displayPosts() {
+                const start = (currentPage - 1) * postsPerPage;
+                const end = start + postsPerPage;
+                const currentPosts = blogPosts.slice(start, end);
+
+                const postsContainer = document.getElementById('blog-posts');
+                postsContainer.innerHTML = '';
+
+                currentPosts.forEach(post => {
+                    const postElement = `
+                        <div class="blog-post card mb-4 shadow-sm pop-in col-md-6">
+                            <img src="${post.image}" class="card-img-top" alt="${post.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text">${post.content.substring(0, 150)}<span class="more-text" id="more-${post.id}" style="display: none;">${post.content.substring(150)}</span></p>
+                                <button class="btn btn-primary hover-bounce read-more-btn" onclick="toggleReadMore(${post.id}, this)">Read More</button>
+                            </div>
+                        </div>
+                    `;
+                    postsContainer.insertAdjacentHTML('beforeend', postElement);
+                });
+            }
+
+            function setupPagination() {
+                const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+                const paginationContainer = document.getElementById('pagination');
+                paginationContainer.innerHTML = '';
+
+                // Previous button
+                const prevDisabled = currentPage === 1 ? 'disabled' : '';
+                paginationContainer.insertAdjacentHTML('beforeend', `
+                    <li class="page-item ${prevDisabled}">
+                        <a class="page-link" href="#" aria-label="Previous" onclick="changePage(${currentPage - 1})">&laquo;</a>
+                    </li>
+                `);
+
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const activeClass = i === currentPage ? 'active' : '';
+                    paginationContainer.insertAdjacentHTML('beforeend', `
+                        <li class="page-item ${activeClass}">
+                            <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        </li>
+                    `);
+                }
+
+                // Next button
+                const nextDisabled = currentPage === totalPages ? 'disabled' : '';
+                paginationContainer.insertAdjacentHTML('beforeend', `
+                    <li class="page-item ${nextDisabled}">
+                        <a class="page-link" href="#" aria-label="Next" onclick="changePage(${currentPage + 1})">&raquo;</a>
+                    </li>
+                `);
+            }
+
+            window.changePage = function(page) {
+                if (page < 1 || page > Math.ceil(blogPosts.length / postsPerPage)) return;
+                currentPage = page;
+                displayPosts();
+                setupPagination();
+            };
+
+            window.toggleReadMore = function(postId, btn) {
+                const moreText = document.getElementById(`more-${postId}`);
+                if (moreText.style.display === "none" || moreText.style.display === "") {
+                    moreText.style.display = "inline";
+                    btn.textContent = "Read Less";
+                } else {
+                    moreText.style.display = "none";
+                    btn.textContent = "Read More";
+                }
+            };
+
+            // Initialize posts and pagination
+            displayPosts();
+            setupPagination();
+
+            // Dark Mode Toggle
             const toggleSwitch = document.getElementById('darkModeToggle');
             const currentTheme = localStorage.getItem('theme');
 
             if (currentTheme === 'dark') {
                 document.body.classList.add('dark-mode');
-                toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
-            } else {
-                document.body.classList.remove('dark-mode');
-                toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
+                toggleSwitch.innerHTML = '<i class="fas fa-sun fa-1x"></i>';
             }
 
             toggleSwitch.addEventListener('click', function() {
-                if (document.body.classList.contains('dark-mode')) {
-                    document.body.classList.remove('dark-mode');
-                    toggleSwitch.innerHTML = '<i class="fas fa-moon fa-2x"></i>';
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    document.body.classList.add('dark-mode');
-                    toggleSwitch.innerHTML = '<i class="fas fa-sun fa-2x"></i>';
-                    localStorage.setItem('theme', 'dark');
-                }
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                toggleSwitch.innerHTML = isDarkMode ? '<i class="fas fa-sun fa-1x"></i>' : '<i class="fas fa-moon fa-1x"></i>';
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
             });
         });
     </script>
